@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g  -shared  -o libSkeletonPass.so CMakeFiles/SkeletonPass.dir/Skeleton.cpp.o  -L/home/sk/Work/llvm-6.0.1.build/./lib 

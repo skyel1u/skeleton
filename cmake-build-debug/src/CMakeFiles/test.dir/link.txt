@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -g  -shared -Wl,-soname,libtest.so -o libtest.so CMakeFiles/test.dir/library.cpp.o  -L/home/sk/Work/llvm-6.0.1.build/./lib 

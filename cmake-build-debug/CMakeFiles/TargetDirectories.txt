@@ -1,0 +1,6 @@
+/home/sk/Desktop/pass-example/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/sk/Desktop/pass-example/cmake-build-debug/CMakeFiles/intrinsics_gen.dir
+/home/sk/Desktop/pass-example/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/sk/Desktop/pass-example/cmake-build-debug/src/CMakeFiles/rebuild_cache.dir
+/home/sk/Desktop/pass-example/cmake-build-debug/src/CMakeFiles/SkeletonPass.dir
+/home/sk/Desktop/pass-example/cmake-build-debug/src/CMakeFiles/edit_cache.dir

@@ -1,24 +1,42 @@
 #include "Skeleton.h"
 
 using namespace llvm;
+using namespace std;
 
-void ModuleLoop::getAnalysisUsage(AnalysisUsage &AU) const {
-    AU.addRequired<LoopInfoWrapperPass>();
+namespace llvm
+{
+
+Pass *createSkeletonPass()
+{
+    return new SkeletonPass();
 }
 
-char ModuleLoop::ID = 0;
-ModulePass *llvm::createModuleLoopPass() { return new ModuleLoop(); }
+char SkeletonPass::ID = 0;
+} // namespace llvm
 
-bool ModuleLoop::runOnModule(Module &M) {
-
-    for (Module::iterator func_iter = M.begin(), func_iter_end = M.end(); func_iter != func_iter_end; ++func_iter) {
-        Function &F = *func_iter;
-        if (F.isDeclaration()) {
-            LoopInfo &LI = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
-        }
-
+bool SkeletonPass::runOnModule(Module &M)
+{
+    errs() << "==========================\n";
+    Function *F = M.getFunction("main");
+    if (F)
+    {
+        errs() << "Main Function Found!";
+        return true;
     }
-    return false;
+    else
+    {
+        errs() << "no main Function found!";
+    }
 }
 
-static RegisterPass<ModuleLoop> X("run", "LoopPass within ModulePass");
+static RegisterPass<SkeletonPass> X("run", "Hello world pass", false, false);
+
+// Automatically enable the pass.
+// http://adriansampson.net/blog/clangpass.html
+static void registerSkeletonPass(const PassManagerBuilder &,
+                                legacy::PassManagerBase &PM) {
+   PM.add(new SkeletonPass());
+}
+static RegisterStandardPasses
+       RegisterMyPass(PassManagerBuilder::EP_EarlyAsPossible,
+                      registerSkeletonPass);
